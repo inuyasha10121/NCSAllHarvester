@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.textBoxDataDir = new System.Windows.Forms.TextBox();
             this.buttonLoad = new System.Windows.Forms.Button();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxTargetAtom = new System.Windows.Forms.ComboBox();
             this.comboBoxTensorComp = new System.Windows.Forms.ComboBox();
             this.comboBoxContribType = new System.Windows.Forms.ComboBox();
-            this.comboBoxContribAtom = new System.Windows.Forms.ComboBox();
+            this.comboBoxContribNLMO = new System.Windows.Forms.ComboBox();
             this.comboBoxField = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,9 +49,20 @@
             this.label7 = new System.Windows.Forms.Label();
             this.buttonAddSeries = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
-            this.buttonSaveToFile = new System.Windows.Forms.Button();
+            this.buttonSaveGraph = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.buttonPlotNLMOs = new System.Windows.Forms.Button();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonPlotAllIso = new System.Windows.Forms.Button();
+            this.buttonAllAniso = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ColumnAtom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxDataDir
@@ -71,22 +82,6 @@
             this.buttonLoad.Text = "Load Data";
             this.buttonLoad.UseVisualStyleBackColor = true;
             this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
-            // 
-            // chart1
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(12, 242);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(878, 373);
-            this.chart1.TabIndex = 2;
-            this.chart1.Text = "chart1";
             // 
             // label1
             // 
@@ -121,13 +116,13 @@
             this.comboBoxContribType.Size = new System.Drawing.Size(121, 21);
             this.comboBoxContribType.TabIndex = 6;
             // 
-            // comboBoxContribAtom
+            // comboBoxContribNLMO
             // 
-            this.comboBoxContribAtom.FormattingEnabled = true;
-            this.comboBoxContribAtom.Location = new System.Drawing.Point(396, 135);
-            this.comboBoxContribAtom.Name = "comboBoxContribAtom";
-            this.comboBoxContribAtom.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxContribAtom.TabIndex = 7;
+            this.comboBoxContribNLMO.FormattingEnabled = true;
+            this.comboBoxContribNLMO.Location = new System.Drawing.Point(396, 135);
+            this.comboBoxContribNLMO.Name = "comboBoxContribNLMO";
+            this.comboBoxContribNLMO.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxContribNLMO.TabIndex = 7;
             // 
             // comboBoxField
             // 
@@ -178,9 +173,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(393, 119);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(90, 13);
+            this.label6.Size = new System.Drawing.Size(100, 13);
             this.label6.TabIndex = 13;
-            this.label6.Text = "Contributing Atom";
+            this.label6.Text = "Contributing NLMO:";
             // 
             // textBoxLabel
             // 
@@ -200,37 +195,127 @@
             // 
             // buttonAddSeries
             // 
-            this.buttonAddSeries.Location = new System.Drawing.Point(15, 162);
+            this.buttonAddSeries.Location = new System.Drawing.Point(756, 133);
             this.buttonAddSeries.Name = "buttonAddSeries";
             this.buttonAddSeries.Size = new System.Drawing.Size(75, 23);
             this.buttonAddSeries.TabIndex = 16;
             this.buttonAddSeries.Text = "Add Series";
             this.buttonAddSeries.UseVisualStyleBackColor = true;
+            this.buttonAddSeries.Click += new System.EventHandler(this.buttonAddSeries_Click);
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(15, 213);
+            this.buttonClear.Location = new System.Drawing.Point(15, 220);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(75, 23);
             this.buttonClear.TabIndex = 17;
             this.buttonClear.Text = "Clear Graph";
             this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
-            // buttonSaveToFile
+            // buttonSaveGraph
             // 
-            this.buttonSaveToFile.Location = new System.Drawing.Point(815, 213);
-            this.buttonSaveToFile.Name = "buttonSaveToFile";
-            this.buttonSaveToFile.Size = new System.Drawing.Size(75, 23);
-            this.buttonSaveToFile.TabIndex = 18;
-            this.buttonSaveToFile.Text = "Save Data";
-            this.buttonSaveToFile.UseVisualStyleBackColor = true;
+            this.buttonSaveGraph.Location = new System.Drawing.Point(616, 220);
+            this.buttonSaveGraph.Name = "buttonSaveGraph";
+            this.buttonSaveGraph.Size = new System.Drawing.Size(75, 23);
+            this.buttonSaveGraph.TabIndex = 18;
+            this.buttonSaveGraph.Text = "Save Graph";
+            this.buttonSaveGraph.UseVisualStyleBackColor = true;
+            this.buttonSaveGraph.Click += new System.EventHandler(this.buttonSaveGraph_Click);
+            // 
+            // buttonPlotNLMOs
+            // 
+            this.buttonPlotNLMOs.Location = new System.Drawing.Point(418, 162);
+            this.buttonPlotNLMOs.Name = "buttonPlotNLMOs";
+            this.buttonPlotNLMOs.Size = new System.Drawing.Size(75, 23);
+            this.buttonPlotNLMOs.TabIndex = 19;
+            this.buttonPlotNLMOs.Text = "Plot NLMOs";
+            this.buttonPlotNLMOs.UseVisualStyleBackColor = true;
+            this.buttonPlotNLMOs.Click += new System.EventHandler(this.buttonPlotNLMOs_Click);
+            // 
+            // chart1
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
+            this.chart1.Location = new System.Drawing.Point(12, 249);
+            this.chart1.Name = "chart1";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart1.Series.Add(series3);
+            this.chart1.Size = new System.Drawing.Size(679, 366);
+            this.chart1.TabIndex = 20;
+            this.chart1.Text = "chart1";
+            this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseClick);
+            this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
+            // 
+            // buttonPlotAllIso
+            // 
+            this.buttonPlotAllIso.Location = new System.Drawing.Point(140, 220);
+            this.buttonPlotAllIso.Name = "buttonPlotAllIso";
+            this.buttonPlotAllIso.Size = new System.Drawing.Size(75, 23);
+            this.buttonPlotAllIso.TabIndex = 21;
+            this.buttonPlotAllIso.Text = "Plot All Iso";
+            this.buttonPlotAllIso.UseVisualStyleBackColor = true;
+            this.buttonPlotAllIso.Click += new System.EventHandler(this.buttonPlotIso_Click);
+            // 
+            // buttonAllAniso
+            // 
+            this.buttonAllAniso.Location = new System.Drawing.Point(221, 220);
+            this.buttonAllAniso.Name = "buttonAllAniso";
+            this.buttonAllAniso.Size = new System.Drawing.Size(75, 23);
+            this.buttonAllAniso.TabIndex = 22;
+            this.buttonAllAniso.Text = "Plot All Ani";
+            this.buttonAllAniso.UseVisualStyleBackColor = true;
+            this.buttonAllAniso.Click += new System.EventHandler(this.buttonAniso_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnAtom,
+            this.ColumnRange,
+            this.ColumnMin,
+            this.ColumnMax});
+            this.dataGridView1.Location = new System.Drawing.Point(697, 249);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(193, 366);
+            this.dataGridView1.TabIndex = 23;
+            // 
+            // ColumnAtom
+            // 
+            this.ColumnAtom.HeaderText = "Atom";
+            this.ColumnAtom.Name = "ColumnAtom";
+            this.ColumnAtom.Width = 50;
+            // 
+            // ColumnRange
+            // 
+            this.ColumnRange.HeaderText = "Range";
+            this.ColumnRange.Name = "ColumnRange";
+            // 
+            // ColumnMin
+            // 
+            this.ColumnMin.HeaderText = "Min";
+            this.ColumnMin.Name = "ColumnMin";
+            // 
+            // ColumnMax
+            // 
+            this.ColumnMax.HeaderText = "Max";
+            this.ColumnMax.Name = "ColumnMax";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(902, 627);
-            this.Controls.Add(this.buttonSaveToFile);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.buttonAllAniso);
+            this.Controls.Add(this.buttonPlotAllIso);
+            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.buttonPlotNLMOs);
+            this.Controls.Add(this.buttonSaveGraph);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.buttonAddSeries);
             this.Controls.Add(this.label7);
@@ -241,17 +326,17 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxField);
-            this.Controls.Add(this.comboBoxContribAtom);
+            this.Controls.Add(this.comboBoxContribNLMO);
             this.Controls.Add(this.comboBoxContribType);
             this.Controls.Add(this.comboBoxTensorComp);
             this.Controls.Add(this.comboBoxTargetAtom);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.chart1);
             this.Controls.Add(this.buttonLoad);
             this.Controls.Add(this.textBoxDataDir);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,12 +346,11 @@
 
         private System.Windows.Forms.TextBox textBoxDataDir;
         private System.Windows.Forms.Button buttonLoad;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxTargetAtom;
         private System.Windows.Forms.ComboBox comboBoxTensorComp;
         private System.Windows.Forms.ComboBox comboBoxContribType;
-        private System.Windows.Forms.ComboBox comboBoxContribAtom;
+        private System.Windows.Forms.ComboBox comboBoxContribNLMO;
         private System.Windows.Forms.ComboBox comboBoxField;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -277,8 +361,18 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button buttonAddSeries;
         private System.Windows.Forms.Button buttonClear;
-        private System.Windows.Forms.Button buttonSaveToFile;
+        private System.Windows.Forms.Button buttonSaveGraph;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button buttonPlotNLMOs;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button buttonPlotAllIso;
+        private System.Windows.Forms.Button buttonAllAniso;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAtom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRange;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMax;
     }
 }
 
