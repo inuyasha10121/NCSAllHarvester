@@ -21,6 +21,7 @@ namespace NCSAllHarvester
         int numAngles = 0;
 
         List<int> angles = new List<int>();
+        List<int> fields = new List<int>();
 
         //[Target Atom][Tensor Component][Contribution Type][Contribution Atom][Field Strength][Angle]
         List<List<List<List<List<List<double>>>>>> datatable = new List<List<List<List<List<List<double>>>>>>();
@@ -71,6 +72,7 @@ namespace NCSAllHarvester
             foreach(var fd in fielddirs)
             {
                 comboBoxField.Items.Add(fd.Substring(fd.LastIndexOf("\\") + 3));
+                fields.Add(int.Parse(fd.Substring(fd.LastIndexOf("FS") + 2)));
             }
             comboBoxField.SelectedIndex = 0;
 
@@ -448,6 +450,65 @@ namespace NCSAllHarvester
                 }
                 dataGridView1.Rows.Add(chart1.Series[i].Name, Math.Round(max - min, 4), Math.Round(min, 4), Math.Round(max, 4));
             }
+        }
+
+        private void textBoxDataDir_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            switch(e.KeyChar)
+            {
+                case (char)Keys.Enter:
+                    buttonLoad_Click(sender, e);
+                    break;
+            }
+        }
+
+        private void buttonPlotFieldIso_Click(object sender, EventArgs e)
+        {
+            chart1.Series.Clear();
+            for (int field = 0; field < numFields; ++field)
+            {
+                var data = basicnmr[comboBoxTargetAtom.SelectedIndex][0][field];
+                if(data.Any(o => o != 0.0))
+                {
+                    var label = "FS-" + comboBoxField.Items[field].ToString();
+                    chart1.Series.Add(label);
+                    chart1.Series[label].ChartType = SeriesChartType.Line;
+                    chart1.Series[label].MarkerStyle = MarkerStyle.Circle;
+                    for(int i = 0; i < numAngles; ++i)
+                    {
+                        chart1.Series[label].Points.AddXY(angles[i], data[i]);
+                    }
+                }
+            }
+            populateTable();
+
+        }
+
+        private void buttonClipboardGraph_Click(object sender, EventArgs e)
+        {
+            if (chart1.Series.Count == 0)
+            {
+                MessageBox.Show("ERROR: No data in chart!");
+                return;
+            }
+            var data = "";
+            data += "Angle:\t";
+            for (int ser = 0; ser < chart1.Series.Count; ++ser)
+            {
+                data += chart1.Series[ser].Name + "\t";
+            }
+            data += "\n";
+            for (int ang = 0; ang < numAngles; ++ang)
+            {
+                data += angles[ang] + "\t";
+                for (int ser = 0; ser < chart1.Series.Count; ++ser)
+                {
+                    data += chart1.Series[ser].Points[ang].YValues[0] + "\t";
+                }
+                data += "\n";
+            }
+            Clipboard.SetText(data);
+            MessageBox.Show("Done!");
         }
     }
 }

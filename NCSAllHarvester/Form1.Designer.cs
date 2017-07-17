@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.textBoxDataDir = new System.Windows.Forms.TextBox();
             this.buttonLoad = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,10 +57,12 @@
             this.buttonPlotAllIso = new System.Windows.Forms.Button();
             this.buttonAllAniso = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.buttonPlotFieldIso = new System.Windows.Forms.Button();
             this.ColumnAtom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonClipboardGraph = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -72,6 +74,7 @@
             this.textBoxDataDir.Size = new System.Drawing.Size(599, 20);
             this.textBoxDataDir.TabIndex = 0;
             this.textBoxDataDir.Text = "G:\\Gaussian\\F-NMR\\MonteCarlo\\wb97xStudies\\4FTol-Water\\X";
+            this.textBoxDataDir.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDataDir_KeyPress);
             // 
             // buttonLoad
             // 
@@ -235,16 +238,16 @@
             // 
             // chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(12, 249);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(679, 366);
             this.chart1.TabIndex = 20;
             this.chart1.Text = "chart1";
@@ -284,9 +287,19 @@
             this.dataGridView1.Size = new System.Drawing.Size(193, 366);
             this.dataGridView1.TabIndex = 23;
             // 
+            // buttonPlotFieldIso
+            // 
+            this.buttonPlotFieldIso.Location = new System.Drawing.Point(302, 220);
+            this.buttonPlotFieldIso.Name = "buttonPlotFieldIso";
+            this.buttonPlotFieldIso.Size = new System.Drawing.Size(75, 23);
+            this.buttonPlotFieldIso.TabIndex = 24;
+            this.buttonPlotFieldIso.Text = "Plot Field Iso";
+            this.buttonPlotFieldIso.UseVisualStyleBackColor = true;
+            this.buttonPlotFieldIso.Click += new System.EventHandler(this.buttonPlotFieldIso_Click);
+            // 
             // ColumnAtom
             // 
-            this.ColumnAtom.HeaderText = "Atom";
+            this.ColumnAtom.HeaderText = "Label";
             this.ColumnAtom.Name = "ColumnAtom";
             this.ColumnAtom.Width = 50;
             // 
@@ -305,11 +318,23 @@
             this.ColumnMax.HeaderText = "Max";
             this.ColumnMax.Name = "ColumnMax";
             // 
+            // buttonClipboardGraph
+            // 
+            this.buttonClipboardGraph.Location = new System.Drawing.Point(616, 191);
+            this.buttonClipboardGraph.Name = "buttonClipboardGraph";
+            this.buttonClipboardGraph.Size = new System.Drawing.Size(75, 23);
+            this.buttonClipboardGraph.TabIndex = 25;
+            this.buttonClipboardGraph.Text = "Clipboard";
+            this.buttonClipboardGraph.UseVisualStyleBackColor = true;
+            this.buttonClipboardGraph.Click += new System.EventHandler(this.buttonClipboardGraph_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(902, 627);
+            this.Controls.Add(this.buttonClipboardGraph);
+            this.Controls.Add(this.buttonPlotFieldIso);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttonAllAniso);
             this.Controls.Add(this.buttonPlotAllIso);
@@ -369,10 +394,12 @@
         private System.Windows.Forms.Button buttonPlotAllIso;
         private System.Windows.Forms.Button buttonAllAniso;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button buttonPlotFieldIso;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAtom;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRange;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMin;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMax;
+        private System.Windows.Forms.Button buttonClipboardGraph;
     }
 }
 
