@@ -1,6 +1,6 @@
 ﻿namespace NCSAllHarvester
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -57,30 +57,34 @@
             this.buttonPlotAllIso = new System.Windows.Forms.Button();
             this.buttonAllAniso = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.buttonPlotFieldIso = new System.Windows.Forms.Button();
             this.ColumnAtom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonPlotFieldIso = new System.Windows.Forms.Button();
             this.buttonClipboardGraph = new System.Windows.Forms.Button();
+            this.checkBoxClipboardIgnoreX = new System.Windows.Forms.CheckBox();
+            this.buttonStrechForm = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxDataDir
             // 
-            this.textBoxDataDir.Location = new System.Drawing.Point(76, 12);
+            this.textBoxDataDir.Location = new System.Drawing.Point(101, 15);
+            this.textBoxDataDir.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxDataDir.Name = "textBoxDataDir";
-            this.textBoxDataDir.Size = new System.Drawing.Size(599, 20);
+            this.textBoxDataDir.Size = new System.Drawing.Size(797, 22);
             this.textBoxDataDir.TabIndex = 0;
             this.textBoxDataDir.Text = "G:\\Gaussian\\F-NMR\\MonteCarlo\\wb97xStudies\\4FTol-Water\\X";
             this.textBoxDataDir.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDataDir_KeyPress);
             // 
             // buttonLoad
             // 
-            this.buttonLoad.Location = new System.Drawing.Point(76, 38);
+            this.buttonLoad.Location = new System.Drawing.Point(101, 47);
+            this.buttonLoad.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLoad.Name = "buttonLoad";
-            this.buttonLoad.Size = new System.Drawing.Size(75, 23);
+            this.buttonLoad.Size = new System.Drawing.Size(100, 28);
             this.buttonLoad.TabIndex = 1;
             this.buttonLoad.Text = "Load Data";
             this.buttonLoad.UseVisualStyleBackColor = true;
@@ -89,118 +93,132 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
+            this.label1.Location = new System.Drawing.Point(16, 18);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.Size = new System.Drawing.Size(75, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "Data Path:";
             // 
             // comboBoxTargetAtom
             // 
             this.comboBoxTargetAtom.FormattingEnabled = true;
-            this.comboBoxTargetAtom.Location = new System.Drawing.Point(15, 135);
+            this.comboBoxTargetAtom.Location = new System.Drawing.Point(20, 166);
+            this.comboBoxTargetAtom.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxTargetAtom.Name = "comboBoxTargetAtom";
-            this.comboBoxTargetAtom.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxTargetAtom.Size = new System.Drawing.Size(160, 24);
             this.comboBoxTargetAtom.TabIndex = 4;
             // 
             // comboBoxTensorComp
             // 
             this.comboBoxTensorComp.FormattingEnabled = true;
-            this.comboBoxTensorComp.Location = new System.Drawing.Point(142, 135);
+            this.comboBoxTensorComp.Location = new System.Drawing.Point(189, 166);
+            this.comboBoxTensorComp.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxTensorComp.Name = "comboBoxTensorComp";
-            this.comboBoxTensorComp.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxTensorComp.Size = new System.Drawing.Size(160, 24);
             this.comboBoxTensorComp.TabIndex = 5;
             // 
             // comboBoxContribType
             // 
             this.comboBoxContribType.FormattingEnabled = true;
-            this.comboBoxContribType.Location = new System.Drawing.Point(269, 135);
+            this.comboBoxContribType.Location = new System.Drawing.Point(359, 166);
+            this.comboBoxContribType.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxContribType.Name = "comboBoxContribType";
-            this.comboBoxContribType.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxContribType.Size = new System.Drawing.Size(160, 24);
             this.comboBoxContribType.TabIndex = 6;
             // 
             // comboBoxContribNLMO
             // 
             this.comboBoxContribNLMO.FormattingEnabled = true;
-            this.comboBoxContribNLMO.Location = new System.Drawing.Point(396, 135);
+            this.comboBoxContribNLMO.Location = new System.Drawing.Point(528, 166);
+            this.comboBoxContribNLMO.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxContribNLMO.Name = "comboBoxContribNLMO";
-            this.comboBoxContribNLMO.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxContribNLMO.Size = new System.Drawing.Size(160, 24);
             this.comboBoxContribNLMO.TabIndex = 7;
             // 
             // comboBoxField
             // 
             this.comboBoxField.FormattingEnabled = true;
-            this.comboBoxField.Location = new System.Drawing.Point(523, 135);
+            this.comboBoxField.Location = new System.Drawing.Point(697, 166);
+            this.comboBoxField.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxField.Name = "comboBoxField";
-            this.comboBoxField.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxField.Size = new System.Drawing.Size(160, 24);
             this.comboBoxField.TabIndex = 8;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 119);
+            this.label2.Location = new System.Drawing.Point(16, 146);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.Size = new System.Drawing.Size(90, 17);
             this.label2.TabIndex = 9;
             this.label2.Text = "Target Atom:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(142, 119);
+            this.label3.Location = new System.Drawing.Point(189, 146);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 13);
+            this.label3.Size = new System.Drawing.Size(97, 17);
             this.label3.TabIndex = 10;
             this.label3.Text = "Tensor Comp.";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(266, 119);
+            this.label4.Location = new System.Drawing.Point(355, 146);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 13);
+            this.label4.Size = new System.Drawing.Size(124, 17);
             this.label4.TabIndex = 11;
             this.label4.Text = "Contribution Type:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(523, 119);
+            this.label5.Location = new System.Drawing.Point(697, 146);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 13);
+            this.label5.Size = new System.Drawing.Size(100, 17);
             this.label5.TabIndex = 12;
             this.label5.Text = "Field Strength:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(393, 119);
+            this.label6.Location = new System.Drawing.Point(524, 146);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(100, 13);
+            this.label6.Size = new System.Drawing.Size(132, 17);
             this.label6.TabIndex = 13;
             this.label6.Text = "Contributing NLMO:";
             // 
             // textBoxLabel
             // 
-            this.textBoxLabel.Location = new System.Drawing.Point(650, 135);
+            this.textBoxLabel.Location = new System.Drawing.Point(867, 166);
+            this.textBoxLabel.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxLabel.Name = "textBoxLabel";
-            this.textBoxLabel.Size = new System.Drawing.Size(100, 20);
+            this.textBoxLabel.Size = new System.Drawing.Size(132, 22);
             this.textBoxLabel.TabIndex = 14;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(647, 119);
+            this.label7.Location = new System.Drawing.Point(863, 146);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 13);
+            this.label7.Size = new System.Drawing.Size(85, 17);
             this.label7.TabIndex = 15;
             this.label7.Text = "Chart Label:";
             // 
             // buttonAddSeries
             // 
-            this.buttonAddSeries.Location = new System.Drawing.Point(756, 133);
+            this.buttonAddSeries.Location = new System.Drawing.Point(1008, 164);
+            this.buttonAddSeries.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddSeries.Name = "buttonAddSeries";
-            this.buttonAddSeries.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddSeries.Size = new System.Drawing.Size(100, 28);
             this.buttonAddSeries.TabIndex = 16;
             this.buttonAddSeries.Text = "Add Series";
             this.buttonAddSeries.UseVisualStyleBackColor = true;
@@ -208,9 +226,10 @@
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(15, 220);
+            this.buttonClear.Location = new System.Drawing.Point(20, 271);
+            this.buttonClear.Margin = new System.Windows.Forms.Padding(4);
             this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(75, 23);
+            this.buttonClear.Size = new System.Drawing.Size(100, 28);
             this.buttonClear.TabIndex = 17;
             this.buttonClear.Text = "Clear Graph";
             this.buttonClear.UseVisualStyleBackColor = true;
@@ -218,9 +237,10 @@
             // 
             // buttonSaveGraph
             // 
-            this.buttonSaveGraph.Location = new System.Drawing.Point(616, 220);
+            this.buttonSaveGraph.Location = new System.Drawing.Point(821, 271);
+            this.buttonSaveGraph.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSaveGraph.Name = "buttonSaveGraph";
-            this.buttonSaveGraph.Size = new System.Drawing.Size(75, 23);
+            this.buttonSaveGraph.Size = new System.Drawing.Size(100, 28);
             this.buttonSaveGraph.TabIndex = 18;
             this.buttonSaveGraph.Text = "Save Graph";
             this.buttonSaveGraph.UseVisualStyleBackColor = true;
@@ -228,9 +248,10 @@
             // 
             // buttonPlotNLMOs
             // 
-            this.buttonPlotNLMOs.Location = new System.Drawing.Point(418, 162);
+            this.buttonPlotNLMOs.Location = new System.Drawing.Point(557, 199);
+            this.buttonPlotNLMOs.Margin = new System.Windows.Forms.Padding(4);
             this.buttonPlotNLMOs.Name = "buttonPlotNLMOs";
-            this.buttonPlotNLMOs.Size = new System.Drawing.Size(75, 23);
+            this.buttonPlotNLMOs.Size = new System.Drawing.Size(100, 28);
             this.buttonPlotNLMOs.TabIndex = 19;
             this.buttonPlotNLMOs.Text = "Plot NLMOs";
             this.buttonPlotNLMOs.UseVisualStyleBackColor = true;
@@ -242,13 +263,14 @@
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(12, 249);
+            this.chart1.Location = new System.Drawing.Point(16, 306);
+            this.chart1.Margin = new System.Windows.Forms.Padding(4);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(679, 366);
+            this.chart1.Size = new System.Drawing.Size(905, 450);
             this.chart1.TabIndex = 20;
             this.chart1.Text = "chart1";
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseClick);
@@ -256,9 +278,10 @@
             // 
             // buttonPlotAllIso
             // 
-            this.buttonPlotAllIso.Location = new System.Drawing.Point(140, 220);
+            this.buttonPlotAllIso.Location = new System.Drawing.Point(187, 271);
+            this.buttonPlotAllIso.Margin = new System.Windows.Forms.Padding(4);
             this.buttonPlotAllIso.Name = "buttonPlotAllIso";
-            this.buttonPlotAllIso.Size = new System.Drawing.Size(75, 23);
+            this.buttonPlotAllIso.Size = new System.Drawing.Size(100, 28);
             this.buttonPlotAllIso.TabIndex = 21;
             this.buttonPlotAllIso.Text = "Plot All Iso";
             this.buttonPlotAllIso.UseVisualStyleBackColor = true;
@@ -266,9 +289,10 @@
             // 
             // buttonAllAniso
             // 
-            this.buttonAllAniso.Location = new System.Drawing.Point(221, 220);
+            this.buttonAllAniso.Location = new System.Drawing.Point(295, 271);
+            this.buttonAllAniso.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAllAniso.Name = "buttonAllAniso";
-            this.buttonAllAniso.Size = new System.Drawing.Size(75, 23);
+            this.buttonAllAniso.Size = new System.Drawing.Size(100, 28);
             this.buttonAllAniso.TabIndex = 22;
             this.buttonAllAniso.Text = "Plot All Ani";
             this.buttonAllAniso.UseVisualStyleBackColor = true;
@@ -282,20 +306,11 @@
             this.ColumnRange,
             this.ColumnMin,
             this.ColumnMax});
-            this.dataGridView1.Location = new System.Drawing.Point(697, 249);
+            this.dataGridView1.Location = new System.Drawing.Point(929, 306);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(193, 366);
+            this.dataGridView1.Size = new System.Drawing.Size(257, 450);
             this.dataGridView1.TabIndex = 23;
-            // 
-            // buttonPlotFieldIso
-            // 
-            this.buttonPlotFieldIso.Location = new System.Drawing.Point(302, 220);
-            this.buttonPlotFieldIso.Name = "buttonPlotFieldIso";
-            this.buttonPlotFieldIso.Size = new System.Drawing.Size(75, 23);
-            this.buttonPlotFieldIso.TabIndex = 24;
-            this.buttonPlotFieldIso.Text = "Plot Field Iso";
-            this.buttonPlotFieldIso.UseVisualStyleBackColor = true;
-            this.buttonPlotFieldIso.Click += new System.EventHandler(this.buttonPlotFieldIso_Click);
             // 
             // ColumnAtom
             // 
@@ -318,21 +333,55 @@
             this.ColumnMax.HeaderText = "Max";
             this.ColumnMax.Name = "ColumnMax";
             // 
+            // buttonPlotFieldIso
+            // 
+            this.buttonPlotFieldIso.Location = new System.Drawing.Point(403, 271);
+            this.buttonPlotFieldIso.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonPlotFieldIso.Name = "buttonPlotFieldIso";
+            this.buttonPlotFieldIso.Size = new System.Drawing.Size(100, 28);
+            this.buttonPlotFieldIso.TabIndex = 24;
+            this.buttonPlotFieldIso.Text = "Plot Field Iso";
+            this.buttonPlotFieldIso.UseVisualStyleBackColor = true;
+            this.buttonPlotFieldIso.Click += new System.EventHandler(this.buttonPlotFieldIso_Click);
+            // 
             // buttonClipboardGraph
             // 
-            this.buttonClipboardGraph.Location = new System.Drawing.Point(616, 191);
+            this.buttonClipboardGraph.Location = new System.Drawing.Point(821, 235);
+            this.buttonClipboardGraph.Margin = new System.Windows.Forms.Padding(4);
             this.buttonClipboardGraph.Name = "buttonClipboardGraph";
-            this.buttonClipboardGraph.Size = new System.Drawing.Size(75, 23);
+            this.buttonClipboardGraph.Size = new System.Drawing.Size(100, 28);
             this.buttonClipboardGraph.TabIndex = 25;
             this.buttonClipboardGraph.Text = "Clipboard";
             this.buttonClipboardGraph.UseVisualStyleBackColor = true;
             this.buttonClipboardGraph.Click += new System.EventHandler(this.buttonClipboardGraph_Click);
             // 
-            // Form1
+            // checkBoxClipboardIgnoreX
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.checkBoxClipboardIgnoreX.AutoSize = true;
+            this.checkBoxClipboardIgnoreX.Location = new System.Drawing.Point(928, 235);
+            this.checkBoxClipboardIgnoreX.Name = "checkBoxClipboardIgnoreX";
+            this.checkBoxClipboardIgnoreX.Size = new System.Drawing.Size(83, 21);
+            this.checkBoxClipboardIgnoreX.TabIndex = 27;
+            this.checkBoxClipboardIgnoreX.Text = "Ignore X";
+            this.checkBoxClipboardIgnoreX.UseVisualStyleBackColor = true;
+            // 
+            // buttonStrechForm
+            // 
+            this.buttonStrechForm.Location = new System.Drawing.Point(821, 63);
+            this.buttonStrechForm.Name = "buttonStrechForm";
+            this.buttonStrechForm.Size = new System.Drawing.Size(156, 45);
+            this.buttonStrechForm.TabIndex = 28;
+            this.buttonStrechForm.Text = "Strech Form";
+            this.buttonStrechForm.UseVisualStyleBackColor = true;
+            this.buttonStrechForm.Click += new System.EventHandler(this.buttonStrechForm_Click);
+            // 
+            // MainForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 627);
+            this.ClientSize = new System.Drawing.Size(1203, 772);
+            this.Controls.Add(this.buttonStrechForm);
+            this.Controls.Add(this.checkBoxClipboardIgnoreX);
             this.Controls.Add(this.buttonClipboardGraph);
             this.Controls.Add(this.buttonPlotFieldIso);
             this.Controls.Add(this.dataGridView1);
@@ -358,7 +407,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonLoad);
             this.Controls.Add(this.textBoxDataDir);
-            this.Name = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "MainForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -400,6 +450,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMin;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMax;
         private System.Windows.Forms.Button buttonClipboardGraph;
+        private System.Windows.Forms.CheckBox checkBoxClipboardIgnoreX;
+        private System.Windows.Forms.Button buttonStrechForm;
     }
 }
 

@@ -12,7 +12,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace NCSAllHarvester
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         //Things that must be known before the array can be made:
         int numAtoms = 0;
@@ -31,7 +31,7 @@ namespace NCSAllHarvester
         string[] tensorComponents = { "Isotropic", "XX", "YX", "ZX", "XY", "YY", "ZY", "XZ", "YZ", "ZZ" };
         string[] contributionTypes = { "Total", "SO/Para", "SO/Dia", "AO/Para", "AO/Dia" };
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             foreach(var tc in  tensorComponents)
@@ -59,22 +59,33 @@ namespace NCSAllHarvester
         private void buttonLoad_Click(object sender, EventArgs e)
         {
             //Do some cleaning up, just in case.
+            numAtoms = 0;
+            numNLMOs = 0;
+            numFields = 0;
+            numAngles = 0;
             chart1.Series.Clear();
             comboBoxTargetAtom.Items.Clear();
             comboBoxContribNLMO.Items.Clear();
             comboBoxField.Items.Clear();
             textBoxLabel.Clear();
             datatable = new List<List<List<List<List<List<double>>>>>>();
+            basicnmr = new List<List<List<List<double>>>>();
+            angles = new List<int>();
+            fields = new List<int>();
 
             //Get field strength directories
             var fielddirs = Directory.GetDirectories(textBoxDataDir.Text);
             numFields = fielddirs.Length;
             foreach(var fd in fielddirs)
             {
-                comboBoxField.Items.Add(fd.Substring(fd.LastIndexOf("\\") + 3));
                 fields.Add(int.Parse(fd.Substring(fd.LastIndexOf("FS") + 2)));
             }
-            comboBoxField.SelectedIndex = 0;
+            fields.Sort();
+            foreach(var f in fields)
+            {
+                comboBoxField.Items.Add(f);
+            }
+            comboBoxField.SelectedIndex = comboBoxField.Items.Count - 1;
 
             //Find out how many angles we have now
             var tempouts = Directory.GetFiles(fielddirs[0] + "\\ncsall\\", "*.out");
@@ -260,8 +271,6 @@ namespace NCSAllHarvester
                     }
                 }
             }
-
-            MessageBox.Show("Loaded");
         }
 
         private void buttonClear_Click(object sender, EventArgs e)
@@ -388,7 +397,6 @@ namespace NCSAllHarvester
                 data += "\n";
             }
             File.WriteAllText(outpath, data);
-            MessageBox.Show("Done!");
         }
 
         private void buttonPlotIso_Click(object sender, EventArgs e)
@@ -481,7 +489,6 @@ namespace NCSAllHarvester
                 }
             }
             populateTable();
-
         }
 
         private void buttonClipboardGraph_Click(object sender, EventArgs e)
@@ -492,7 +499,10 @@ namespace NCSAllHarvester
                 return;
             }
             var data = "";
-            data += "Angle:\t";
+            if (!checkBoxClipboardIgnoreX.Checked)
+            {
+                data += "Angle:\t";
+            }
             for (int ser = 0; ser < chart1.Series.Count; ++ser)
             {
                 data += chart1.Series[ser].Name + "\t";
@@ -500,7 +510,10 @@ namespace NCSAllHarvester
             data += "\n";
             for (int ang = 0; ang < numAngles; ++ang)
             {
-                data += angles[ang] + "\t";
+                if (!checkBoxClipboardIgnoreX.Checked)
+                {
+                    data += angles[ang] + "\t";
+                }
                 for (int ser = 0; ser < chart1.Series.Count; ++ser)
                 {
                     data += chart1.Series[ser].Points[ang].YValues[0] + "\t";
@@ -508,7 +521,12 @@ namespace NCSAllHarvester
                 data += "\n";
             }
             Clipboard.SetText(data);
-            MessageBox.Show("Done!");
+        }
+
+        private void buttonStrechForm_Click(object sender, EventArgs e)
+        {
+            var form = new StretchForm();
+            form.Show();
         }
     }
 }
